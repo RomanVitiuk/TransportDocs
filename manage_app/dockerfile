@@ -1,0 +1,9 @@
+FROM python:alpine3.18
+LABEL author="Roman Vitiuk"
+WORKDIR /app/manage_app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r /app/manage_app/requirements.txt
+COPY . /app/manage_app
+EXPOSE 8002
+RUN chmod +x launcher_script.sh
+CMD ["/bin/sh", "launcher_script.sh"]
